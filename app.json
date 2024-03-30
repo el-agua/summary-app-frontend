@@ -1,0 +1,12 @@
+{
+  "expo": {
+    "name": "summary-app",
+    "slug": "summary-app",
+    "version": "1.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ]
+  }
+}
