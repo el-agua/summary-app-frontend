@@ -7,6 +7,14 @@
       "ios",
       "android",
       "web"
+    ],
+    "plugins": [
+      [
+      "expo-font",
+      {
+        "fonts": ["./assets/fonts/AgrightRegular-VGmjZ.ttf", "./assets/fonts/MigaeSemibold-3zd2M.otf"]
+      }
+      ]
     ]
   }
 }
