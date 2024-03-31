@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, TextInput, View } from "react-native";
+import { StyleSheet, Text, TextInput, View, TouchableOpacity } from "react-native";
 
 import SubmitButton from "../components/SubmitButton";
 
@@ -7,6 +7,30 @@ export default function Signup() {
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [password2, setPassword2] = React.useState("");
+  const register = () => {
+    console.log("HI")
+    if (password === password2) {
+      fetch("http://localhost:5000/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: username,
+          password: password,
+        }),
+      })
+        .then((response) => {
+          console.log(response);
+          return response.json();
+        })
+        .then((data) => {
+          console.log(data);
+        });
+    } else {
+      console.log("Passwords do not match");
+    }
+  }
   const styles = StyleSheet.create({
     container: {
       flex: 1,
@@ -46,7 +70,7 @@ export default function Signup() {
       <TextInput
         onChangeText={(text) => setUsername(text)}
         style={styles.textStyle}
-        placeholder="Username"
+        placeholder="Email"
         placeholderTextColor="grey"
       ></TextInput>
       <TextInput
@@ -62,7 +86,7 @@ export default function Signup() {
         placeholderTextColor="grey"
       ></TextInput>
       <Text style={styles.smallText}>Already have an account?</Text>
-      <SubmitButton title="Submit"></SubmitButton>
+      <SubmitButton handlePress={register} title="Submit"></SubmitButton>
     </View>
   );
 }

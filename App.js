@@ -1,4 +1,6 @@
 import { useFonts } from "expo-font";
+import Signup from "./screens/Signup";
+import Login from "./screens/Login";
 import React from "react";
 import { SafeAreaView, StyleSheet, Text } from "react-native";
 import Home from "./screens/Home";

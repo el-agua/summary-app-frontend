@@ -20,7 +20,7 @@ export default function SubmitButton(props) {
     },
   });
   return (
-    <TouchableOpacity style={styles.button}>
+    <TouchableOpacity onPress={props.handlePress} style={styles.button}>
       <Text style={styles.buttonText}>{props.title}</Text>
     </TouchableOpacity>
   );

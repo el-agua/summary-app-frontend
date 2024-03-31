@@ -1,63 +1,74 @@
 import React from "react";
-import { ScrollView, View, Text } from "react-native";
-import AnimatedProgressWheel from 'react-native-progress-wheel';
-import ResponseMetric from "../components/ResponseMetric";
-import tw from 'twrnc';
+import { ScrollView, Text, View } from "react-native";
+import AnimatedProgressWheel from "react-native-progress-wheel";
+import tw from "twrnc";
+
 import NavigationBar from "../components/NavigationBar";
+import ResponseMetric from "../components/ResponseMetric";
 
 export default function AIResponse() {
-    const n = 6;
+  const n = 6;
 
-    return (
-        <View style={tw`flex-1`}>
-        <ScrollView style={tw`flex-1`}>
-            <View style={tw`items-center justify-center py-5`}>
-                <Text style={tw`text-2xl font-bold my-6`}>Your Comprehensive Summary</Text>
-                        <AnimatedProgressWheel 
-                        size={200}
-                        width={20}
-                        animateFromValue={0}
-                        duration={3000}
-                        max={n}
-                        showProgressLabel={true}
-                        subtitle={`out of ${n} minutes`} // How many minutes they actually spent reading
-                        subtitleStyle={tw`text-sm text-gray-500`}
-                        labelStyle={tw`text-lg font-bold text-green-800`} // Green color for the text
-                        rotation={'-90deg'}
-                        rounded
-                        color={'blue'}
-                        progress={3} // Add actual reading time here
-                        backgroundColor={'grey'}
-                    />
-            </View>
-
-            {/* Assuming ResponseMetric can accept and apply style prop */}
-            <ResponseMetric style = {tw`p-2 m-6`} conciseness={6} accuracy={7} difficulty={9} />
-
-            <View style={tw`bg-green-50 p-4 rounded-lg shadow m-2`}>
-            {/* Header for the AI Feedback section */}
-            <Text style={tw`text-xl font-bold mb-2 bg-green-200 p-2 rounded text-green-900`}>
-                AI Feedback
-            </Text>
-            {/* Placeholder for dynamic AI feedback */}
-            <Text style={tw`text-base mb-4 p-2 bg-white rounded shadow`}>
-                Generated Feedback space
-            </Text>
-
-            {/* Header for the AI Generated Summary section */}
-            <Text style={tw`text-xl font-bold mb-2 bg-green-200 p-2 rounded text-green-900`}>
-                AI Generated Summary
-            </Text>
-            {/* Placeholder for dynamic AI generated summary */}
-            <Text style={tw`text-base p-2 bg-white rounded shadow`}>
-                AI Summary
-            </Text>
-        </View>
-        </ScrollView>
-        <NavigationBar>     </NavigationBar>
+  return (
+    <View style={tw`flex-1`}>
+      <ScrollView style={tw`flex-1`}>
+        <View style={tw`items-center justify-center py-5`}>
+          <Text style={tw`text-2xl font-bold my-6`}>
+            Your Comprehensive Summary
+          </Text>
+          <AnimatedProgressWheel
+            size={200}
+            width={20}
+            animateFromValue={0}
+            duration={3000}
+            max={n}
+            showProgressLabel={true}
+            subtitle={`out of ${n} minutes`} // How many minutes they actually spent reading
+            subtitleStyle={tw`text-sm text-gray-500`}
+            labelStyle={tw`text-lg font-bold text-green-800`} // Green color for the text
+            rotation={"-90deg"}
+            rounded
+            color={"blue"}
+            progress={3} // Add actual reading time here
+            backgroundColor={"grey"}
+          />
         </View>
 
-    );
+        {/* Assuming ResponseMetric can accept and apply style prop */}
+        <ResponseMetric
+          style={tw`p-2 m-6`}
+          conciseness={6}
+          accuracy={7}
+          difficulty={9}
+        />
+
+        <View style={tw`bg-green-50 p-4 rounded-lg shadow m-2`}>
+          {/* Header for the AI Feedback section */}
+          <Text
+            style={tw`text-xl font-bold mb-2 bg-green-200 p-2 rounded text-green-900`}
+          >
+            AI Feedback
+          </Text>
+          {/* Placeholder for dynamic AI feedback */}
+          <Text style={tw`text-base mb-4 p-2 bg-white rounded shadow`}>
+            Generated Feedback space
+          </Text>
+
+          {/* Header for the AI Generated Summary section */}
+          <Text
+            style={tw`text-xl font-bold mb-2 bg-green-200 p-2 rounded text-green-900`}
+          >
+            AI Generated Summary
+          </Text>
+          {/* Placeholder for dynamic AI generated summary */}
+          <Text style={tw`text-base p-2 bg-white rounded shadow`}>
+            AI Summary
+          </Text>
+        </View>
+      </ScrollView>
+      <NavigationBar> </NavigationBar>
+    </View>
+  );
 }
 
 // const styles = StyleSheet.create({
