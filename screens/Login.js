@@ -1,11 +1,55 @@
 import React from "react";
 import { StyleSheet, Text, TextInput, View } from "react-native";
+import {AsyncStorage} from 'react-native';
 
 import SubmitButton from "../components/SubmitButton";
 
 export default function Login() {
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
+  storeData = async (store) => {
+    try {
+      await AsyncStorage.setItem(
+        'sessionToken',
+        store,
+      );
+    } catch (error) {
+      return error;
+    }
+  };
+  retrieveData = async () => {
+    try {
+      const value = await AsyncStorage.getItem('sessionToken');
+      if (value !== null) {
+        // We have data!!
+        console.log(value);
+      }
+    } catch (error) {
+      // Error retrieving data
+    }
+  };
+  const login = () => {
+      fetch("http://localhost:5000/signin", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: username,
+          password: password,
+        }),
+      })
+        .then((response) => {
+          console.log(response);
+          return response.json();
+        })
+        .then((data) => {
+          storeData(data.token)
+        }).then(
+            retrieveData().then((res) => console.log(res))
+        );
+        
+  }
   const styles = StyleSheet.create({
     container: {
       flex: 1,
@@ -55,7 +99,7 @@ export default function Login() {
         placeholderTextColor="grey"
       ></TextInput>
       <Text style={styles.smallText}>Don't have an account?</Text>
-      <SubmitButton title="Submit"></SubmitButton>
+      <SubmitButton handlePress={login} title="Submit"></SubmitButton>
     </View>
   );
 }
