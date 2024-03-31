@@ -1,3 +1,4 @@
+import { useFonts } from "expo-font";
 import React from "react";
 import { SafeAreaView, StyleSheet, Text } from "react-native";
 import Home from "./screens/Home";
@@ -15,12 +16,16 @@ export default function App() {
     },
   });
   const [fontsLoaded] = useFonts({
-    'Agright': require('./assets/fonts/AgrightRegular-VGmjZ.ttf'),
-    'Migae': require('./assets/fonts/MigaeSemibold-3zd2M.otf')
+    Agright: require("./assets/fonts/AgrightRegular-VGmjZ.ttf"),
+    Migae: require("./assets/fonts/MigaeSemibold-3zd2M.otf"),
   });
-  return (
-    <SafeAreaView style={styles.container}>
-      <AIResponse/>
-    </SafeAreaView>
-  );
+  if (!fontsLoaded) {
+    return <Text>Loading...</Text>;
+  } else {
+    return (
+      <SafeAreaView style={styles.container}>
+        <Signup></Signup>
+      </SafeAreaView>
+    );
+  }
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
-export default function TopHeader() {
+export default function TopHeaderProfile() {
   const styles = StyleSheet.create({
     header: {
       fontSize: 25,
@@ -14,7 +14,6 @@ export default function TopHeader() {
       marginLeft: 10,
       color: "blue",
       fontFamily: "Migae",
-      justifySelf: "left",
       width: 50,
     },
     filterButton: {
@@ -35,7 +34,7 @@ export default function TopHeader() {
   return (
     <View style={styles.container}>
       <Text style={styles.backButton}>Back</Text>
-      <Text style={styles.header}>Write Summary</Text>
+      <Text style={styles.header}>Profile</Text>
       <Text style={styles.filterButton}></Text>
     </View>
   );
