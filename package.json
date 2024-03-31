@@ -9,19 +9,15 @@
     "react-native": "0.73.2",
     "react-native-countdown-circle-timer": "^3.2.1",
     "react-native-progress-wheel": "^2.1.0",
-    "react-native-web": "~0.19.6"
+    "react-native-web": "~0.19.6",
+    "tailwind-rn": "^4.2.0",
+    "twrnc": "^4.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.19.3",
-    "@esinx/eslint-config": "^1.0.4",
-    "@esinx/prettier-config": "^1.0.0-3",
-    "@typescript-eslint/eslint-plugin": "^7.4.0",
-    "@typescript-eslint/parser": "^7.4.0",
-    "eslint": "^8.57.0",
-    "eslint-plugin-simple-import-sort": "^12.0.0",
-    "eslint-plugin-unused-imports": "^3.1.0",
-    "prettier": "^3.2.5",
-    "typescript": "^5.4.3"
+    "concurrently": "^8.2.2",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.3"
   },
   "name": "summary-app",
   "version": "1.0.0",
@@ -30,6 +26,8 @@
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "build:tailwind": "tailwindcss --input input.css --output tailwind.css --no-autoprefixer && tailwind-rn",
+    "dev:tailwind": "concurrently \"tailwindcss --input input.css --output tailwind.css --no-autoprefixer --watch\" \"tailwind-rn --watch\""
   }
 }
