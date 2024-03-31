@@ -12,7 +12,16 @@
     "react-native-web": "~0.19.6"
   },
   "devDependencies": {
-    "@babel/core": "^7.19.3"
+    "@babel/core": "^7.19.3",
+    "@esinx/eslint-config": "^1.0.4",
+    "@esinx/prettier-config": "^1.0.0-3",
+    "@typescript-eslint/eslint-plugin": "^7.4.0",
+    "@typescript-eslint/parser": "^7.4.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-simple-import-sort": "^12.0.0",
+    "eslint-plugin-unused-imports": "^3.1.0",
+    "prettier": "^3.2.5",
+    "typescript": "^5.4.3"
   },
   "name": "summary-app",
   "version": "1.0.0",

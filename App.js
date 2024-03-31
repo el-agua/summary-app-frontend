@@ -1,11 +1,8 @@
+import { useFonts } from "expo-font";
 import React from "react";
 import { SafeAreaView, StyleSheet, Text } from "react-native";
-import Home from "./screens/Home";
-import WriteSummary from "./screens/WriteSummary";
-import ReadingLog from "./screens/ReadingLog";
-import Insights from "./screens/Insights";
-import Profile from "./screens/Profile";
-import { useFonts } from 'expo-font';
+
+import Signup from "./screens/Signup";
 
 export default function App() {
   const styles = StyleSheet.create({
@@ -14,12 +11,16 @@ export default function App() {
     },
   });
   const [fontsLoaded] = useFonts({
-    'Agright': require('./assets/fonts/AgrightRegular-VGmjZ.ttf'),
-    'Migae': require('./assets/fonts/MigaeSemibold-3zd2M.otf')
+    Agright: require("./assets/fonts/AgrightRegular-VGmjZ.ttf"),
+    Migae: require("./assets/fonts/MigaeSemibold-3zd2M.otf"),
   });
-  return (
-    <SafeAreaView style={styles.container}>
-      <Profile/>
-    </SafeAreaView>
-  );
+  if (!fontsLoaded) {
+    return <Text>Loading...</Text>;
+  } else {
+    return (
+      <SafeAreaView style={styles.container}>
+        <Signup></Signup>
+      </SafeAreaView>
+    );
+  }
 }
