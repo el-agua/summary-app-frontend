@@ -36,7 +36,6 @@ export default function Home() {
     <View
       style={{
         flex: 1,
-
         alignItems: "center",
         paddingHorizontal: 20,
       }}
