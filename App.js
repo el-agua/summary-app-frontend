@@ -5,6 +5,7 @@ import WriteSummary from "./screens/WriteSummary";
 import ReadingLog from "./screens/ReadingLog";
 import Insights from "./screens/Insights";
 import Profile from "./screens/Profile";
+import AIResponse from "./screens/AI_Response";
 import { useFonts } from 'expo-font';
 
 export default function App() {
@@ -19,7 +20,7 @@ export default function App() {
   });
   return (
     <SafeAreaView style={styles.container}>
-      <Profile/>
+      <AIResponse/>
     </SafeAreaView>
   );
 }
