@@ -1,14 +1,17 @@
 import { useFonts } from "expo-font";
 import React from "react";
-import { Keyboard, StyleSheet, Text, TextInput, View } from "react-native";
+import { Keyboard, ScrollViewBase, StyleSheet, Text, TextInput, View } from "react-native";
 import { Dimensions, ScrollView } from "react-native";
 import AnimatedProgressWheel from "react-native-progress-wheel";
 
 import GlobalMetrics from "../components/GlobalMetrics";
 import SampleReading from "../components/SampleReading";
 import TopHeaderProfile from "../components/TopHeaderProfile";
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { SafeAreaView } from "react-native-safe-area-context";
 
-export default function Profile() {
+export default function Profile({navigation}) {
   const [fontsLoaded] = useFonts({
     Agright: require("../assets/fonts/AgrightRegular-VGmjZ.ttf"),
     Migae: require("../assets/fonts/MigaeSemibold-3zd2M.otf"),
@@ -76,7 +79,7 @@ export default function Profile() {
     },
   });
   return (
-    <View style={styles.splitter}>
+    <SafeAreaView edges={['right', 'top', 'left']} style={styles.splitter}>
       <View
         style={{
           flex: 1,
@@ -120,13 +123,13 @@ export default function Profile() {
         <Text style={styles.subheader}>Sample Readings</Text>
 
         <ScrollView horizontal>
-          <SampleReading></SampleReading>
-          <SampleReading></SampleReading>
-          <SampleReading></SampleReading>
-          <SampleReading></SampleReading>
-          <SampleReading></SampleReading>
+          <SampleReading navigation = {navigation}></SampleReading>
+          <SampleReading navigation = {navigation}></SampleReading>
+          <SampleReading navigation = {navigation}></SampleReading>
+          <SampleReading navigation = {navigation}></SampleReading>
+          <SampleReading navigation = {navigation}></SampleReading>
         </ScrollView>
       </View>
-    </View>
+    </SafeAreaView>
   );
 }

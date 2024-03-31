@@ -4,8 +4,11 @@ import { TouchableWithoutFeedback } from "react-native";
 
 import GuidingButton from "../components/GuidingButton";
 import TopHeaderWriting from "../components/TopHeaderWriting";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-export default function WriteSummary() {
+export default function WriteSummary({navigation}) {
   const [response, setResponse] = React.useState("");
   const handleKeyboard = () => {
     if (Keyboard.isVisible()) {
@@ -26,8 +29,8 @@ export default function WriteSummary() {
     },
   });
   return (
-    <TouchableWithoutFeedback onPress={handleKeyboard}>
-      <View
+    <TouchableWithoutFeedback onPress={handleKeyboard} edges = {["top"]}>
+      <SafeAreaView
         style={{
           flex: 1,
 
@@ -36,7 +39,7 @@ export default function WriteSummary() {
         }}
       >
         <View style={{ marginBottom: 20 }}>
-          <TopHeaderWriting />
+          <TopHeaderWriting navigation = {navigation}/>
         </View>
         <View style={{ marginTop: 20 }}>
           <View style={styles.textfield}>
@@ -51,7 +54,7 @@ export default function WriteSummary() {
         <View style={{ position: "absolute", bottom: 10 }}>
           <GuidingButton title="Finished Writing"></GuidingButton>
         </View>
-      </View>
+      </SafeAreaView>
     </TouchableWithoutFeedback>
   );
 }

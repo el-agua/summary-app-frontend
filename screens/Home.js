@@ -6,8 +6,12 @@ import GuidingButton from "../components/GuidingButton";
 import Paragraph from "../components/Paragraph";
 import TimerInside from "../components/TimerInside";
 import TopHeaderReading from "../components/TopHeaderReading";
+import { SafeAreaView } from "react-native-safe-area-context";
+import tw from "twrnc";
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-export default function Home() {
+export default function Home({navigation}) {
   const str = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Faucibus ornare suspendisse sed nisi lacus sed viverra. Aliquam sem fringilla ut morbi tincidunt augue interdum. Nec ultrices dui sapien eget mi proin sed libero enim. Enim eu turpis egestas pretium aenean pharetra magna ac. Dis parturient montes nascetur ridiculus mus. Malesuada pellentesque elit eget gravida cum sociis natoque. Aenean pharetra magna ac placerat. Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim. Turpis tincidunt id aliquet risus feugiat. A condimentum vitae sapien pellentesque habitant morbi tristique senectus et. Placerat duis ultricies lacus sed turpis tincidunt id aliquet risus. Id faucibus nisl tincidunt eget. Congue mauris rhoncus aenean vel elit scelerisque mauris pellentesque. Tortor id aliquet lectus proin nibh. Tortor aliquam nulla facilisi cras fermentum odio eu feugiat pretium.
 
     Purus non enim praesent elementum facilisis leo. Morbi non arcu risus quis. Volutpat est velit egestas dui id ornare arcu odio ut. Aliquet nec ullamcorper sit amet risus nullam eget. Tempus imperdiet nulla malesuada pellentesque elit eget gravida. Consequat semper viverra nam libero justo laoreet sit. Quis vel eros donec ac. Aliquam id diam maecenas ultricies mi eget mauris pharetra et. Pulvinar etiam non quam lacus suspendisse faucibus interdum. Dignissim convallis aenean et tortor at risus viverra adipiscing. Est lorem ipsum dolor sit amet consectetur adipiscing elit pellentesque. Molestie a iaculis at erat pellentesque adipiscing commodo. Consectetur adipiscing elit ut aliquam purus sit. Aliquet bibendum enim facilisis gravida. Libero justo laoreet sit amet cursus sit. Vel orci porta non pulvinar neque. Tristique et egestas quis ipsum. Cursus euismod quis viverra nibh cras pulvinar. Imperdiet nulla malesuada pellentesque elit eget gravida cum sociis.
@@ -33,15 +37,16 @@ export default function Home() {
     },
   };
   return (
-    <View
+    <SafeAreaView
+      edges={["top"]}
       style={{
         flex: 1,
         alignItems: "center",
         paddingHorizontal: 20,
-      }}
-    >
+      }}>
+
       <View style={{ marginBottom: 20 }}>
-        <TopHeaderReading />
+        <TopHeaderReading navigation={navigation}/>
       </View>
       <CountdownCircleTimer
         isPlaying={isPlayingTimer}
@@ -62,8 +67,8 @@ export default function Home() {
         <Paragraph pText={str}></Paragraph>
       </View>
       <View style={{ position: "absolute", bottom: 10 }}>
-        <GuidingButton title="Finished Reading"></GuidingButton>
+        <GuidingButton title="Finished Reading" onPress={() => navigation.navigate("WriteSummary")}></GuidingButton>
       </View>
-    </View>
+    </SafeAreaView>
   );
 }

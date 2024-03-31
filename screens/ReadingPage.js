@@ -7,7 +7,7 @@ import { TouchableOpacity } from "react-native";
 import tw from "twrnc";
 import NavigationBar from "../components/NavigationBar";
 
-export default function ReadingPage({title, text, image_url}) {
+export default function ReadingPage({navigation, title, text, image_url}) {
     const [topics, setTopics] = useState([])
     const [readabilityLevel, setLevel] = useState(0)
 
@@ -57,7 +57,7 @@ export default function ReadingPage({title, text, image_url}) {
                     <Text style={tw`text-xl font-bold text-gray-800`}>{title}</Text>
                 </View>
                 <TouchableOpacity style={tw``}>
-                    <Text style={tw`text-blue-500 text-lg font-bold`}>Back</Text>
+                    <Text style={tw`text-blue-500 text-lg font-bold`} onPress={() => navigation.goBack()}>Back</Text>
                 </TouchableOpacity>
             </View>
 
@@ -85,7 +85,7 @@ export default function ReadingPage({title, text, image_url}) {
                         <Text style={tw`text-blue-800`}>{readabilityLevel}</Text>
                     </View>
                 </View>
-                <TouchableOpacity style={tw`mx-auto w-11/12 bg-blue-500 py-3 rounded-full mt-4`}>
+                <TouchableOpacity style={tw`mx-auto w-11/12 bg-blue-500 py-3 rounded-full mt-4`} onPress={() => navigation.navigate("Home")}>
                 <Text style={tw`text-white text-center text-lg font-bold`}>Begin Reading</Text>
                 </TouchableOpacity>      
                 <NavigationBar/>     

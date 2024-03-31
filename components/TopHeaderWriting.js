@@ -1,7 +1,8 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
+import { TouchableOpacity } from "react-native";
 
-export default function TopHeader() {
+export default function TopHeader({navigation}) {
   const styles = StyleSheet.create({
     header: {
       fontSize: 25,
@@ -32,9 +33,12 @@ export default function TopHeader() {
       alignItems: "center",
     },
   });
+
   return (
     <View style={styles.container}>
-      <Text style={styles.backButton}>Back</Text>
+      <TouchableOpacity onPress={() => navigation.goBack()}>
+        <Text style={styles.backButton}>Back</Text>
+      </TouchableOpacity>
       <Text style={styles.header}>Write Summary</Text>
       <Text style={styles.filterButton}></Text>
     </View>

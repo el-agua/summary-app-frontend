@@ -1,9 +1,11 @@
 import React from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
-
 import Tag from "./Tag";
+import { TouchableOpacity } from "react-native";
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-export default function SampleReading() {
+export default function SampleReading({navigation}) {
   const styles = StyleSheet.create({
     container: {
       display: "flex",
@@ -38,18 +40,20 @@ export default function SampleReading() {
     },
   });
   return (
-    <View style={styles.container}>
-      <Image
-        style={styles.tinyLogo}
-        source={{
-          uri: "https://reactnative.dev/img/tiny_logo.png",
-        }}
-      />
-      <Text style={styles.smallText}>Romeo and Juliet</Text>
-      <View style={{ display: "flex", flexDirection: "row" }}>
-        <Tag title="Literature" color="red" />
-        <Tag title="Easy" color="green" />
+    <TouchableOpacity onPress={() => navigation.navigate('ReadingPage')}>
+      <View style={styles.container}>
+        <Image
+          style={styles.tinyLogo}
+          source={{
+            uri: "https://reactnative.dev/img/tiny_logo.png",
+          }}
+        />
+        <Text style={styles.smallText}>Romeo and Juliet</Text>
+        <View style={{ display: "flex", flexDirection: "row" }}>
+          <Tag title="Literature" color="red" />
+          <Tag title="Easy" color="green" />
+        </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }
