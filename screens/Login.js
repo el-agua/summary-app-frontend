@@ -1,35 +1,20 @@
 import React from "react";
 import { StyleSheet, Text, TextInput, View } from "react-native";
-import {AsyncStorage} from 'react-native';
+import * as SecureStore from "expo-secure-store";
 
 import SubmitButton from "../components/SubmitButton";
 
 export default function Login() {
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
-  storeData = async (store) => {
-    try {
-      await AsyncStorage.setItem(
-        'sessionToken',
-        store,
-      );
-    } catch (error) {
-      return error;
-    }
-  };
-  retrieveData = async () => {
-    try {
-      const value = await AsyncStorage.getItem('sessionToken');
-      if (value !== null) {
-        // We have data!!
-        console.log(value);
-      }
-    } catch (error) {
-      // Error retrieving data
-    }
+  const store = async (key, value) => {
+    await SecureStore.setItemAsync(key, value);
+    const token = await SecureStore.getItemAsync(key);
+    console.log("Hi")
+    console.log(token);
   };
   const login = () => {
-      fetch("http://localhost:5000/signin", {
+      fetch("http://8855-2607-fb91-bd21-d57a-385c-4f96-ee32-b9b3.ngrok-free.app/signin", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -44,10 +29,9 @@ export default function Login() {
           return response.json();
         })
         .then((data) => {
-          storeData(data.token)
-        }).then(
-            retrieveData().then((res) => console.log(res))
-        );
+            console.log(data)
+            store('token', data.sessionID)
+        });
         
   }
   const styles = StyleSheet.create({
